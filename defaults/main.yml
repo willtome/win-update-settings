@@ -1,0 +1,125 @@
+#
+# Registry keys for Windows Update
+# HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\WindowsUpdate
+#
+
+# AcceptTrustedPublisherCerts
+#   1 = Enabled. The WSUS server distributes available signed non-Microsoft updates.
+#   0 = Disabled. The WSUS server does not distribute available signed non-Microsoft updates.
+win_update_AcceptTrustedPublisherCerts: 1
+
+# DisableWindowsUpdateAccess
+#   1 = Disables access to Windows Update.
+#   0 = Enables access to Windows Update.
+win_update_DisableWindowsUpdateAccess: 0
+
+# ElevateNonAdmins
+#   1 = All members of the Users security group can approve or disapprove updates.
+#   0 = Only members of the Administrators security group can approve or disapprove updates.
+win_update_ElevateNonAdmins: 0
+
+# TargetGroup
+#   Name of the computer group to which the computer belongs. This policy is paired with TargetGroupEnabled.
+win_update_TargetGroup: Ansible
+
+# TargetGroupEnabled
+#   1 = Use client-side targeting.
+#   0 = Do not use client-side targeting. This policy is paired with TargetGroup.
+win_update_TargetGroupEnabled: 0
+
+# WUServer
+#   HTTP(S) URL of the WSUS server that is used by Automatic Updates and API callers (by default).
+#   This policy is paired with WUStatusServer, and both keys must be set to the same value to be valid.
+win_update_WUServer: http://10.0.0.11:80
+
+#
+# WSUS registry key for Windows Update
+# HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Policies\WindowsUpdate
+#
+
+# DisableWindowsUpdateAccess
+#    1 = Enabled. All Windows Update features are removed.
+#    0 = Disabled or not configured.
+win_update_DisableWindowsUpdateAccess: 1
+
+#
+# Registry keys for Automatic Update configuration options
+# HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\WindowsUpdate\AU
+#
+
+# AUOptions
+#   2 = Notify before download.
+#   3 = Automatically download and notify of installation.
+#   4 = Automatically download and schedule installation. Only valid if values exist for ScheduledInstallDay and ScheduledInstallTime.
+#   5 = Automatic Updates is required and users can configure it.
+win_update_AUOptions: 2
+
+# AutoInstallMinorUpdates
+#   0 = Treat minor updates like other updates.
+#   1 = Silently install minor updates.
+win_update_AutoInstallMinorUpdates: 0
+
+# DetectionFrequency
+#   Time between detection cycles. Time in hours (1–22).
+win_update_DetectionFrequency: 22
+
+# DetectionFrequencyEnabled
+#   1 = Enable detection frequency.
+#   0 = Disable custom detection frequency (use default value of 22 hours).
+win_update_DetectionFrequencyEnabled: 1
+
+# NoAutoRebootWithLoggedOnUsers
+#   1 = Logged-on user can decide whether to restart the client computer.
+#   0 = Automatic Updates notifies the user that the computer will restart in 15 minutes.
+win_update_NoAutoRebootWithLoggedOnUsers: 1
+
+# NoAutoUpdate
+#   0 = Enable Automatic Updates. time in minutes (1–1,440)
+#   1 = Disable Automatic Updates.
+win_update_NoAutoUpdate: 1
+
+# RebootRelaunchTimeout
+#   Time between prompts for a scheduled restart. time in minutes (1–1,440).
+win_update_RebootRelaunchTimeout: 10
+
+# RebootRelaunchTimeoutEnabled
+#   1 = Enable RebootRelaunchTimeout.
+#   0 = Disable custom RebootRelaunchTimeout(use default value of 10 minutes).
+win_update_RebootRelaunchTimeoutEnabled: 1
+
+# RebootWarningTimeout
+#   Length, in minutes, of the restart warning countdown after updates have been installed
+#   that have a deadline or scheduled updates. time in minutes (1–30)
+win_update_RebootWarningTimeout: 5
+
+# RebootWarningTimeoutEnabled
+#   1 = Enable RebootWarningTimeout.
+#   0 = Disable custom RebootWarningTimeout (use default value of 5 minutes).
+win_update_RebootWarningTimeoutEnabled: 1
+
+# RescheduleWaitTime
+#   Time in minutes that Automatic Updates waits at startup before it applies updates from a missed scheduled installation time.
+#   This policy applies only to scheduled installations, not to deadlines. Time in minutes (1–60).
+#   Updates with deadlines that have expired should always be installed as soon as possible.
+win_update_RescheduleWaitTime: 30
+
+# RescheduleWaitTimeEnabled
+#   1 = Enable RescheduleWaitTime .
+#   0 = Disable RescheduleWaitTime (attempt the missed installation during the next scheduled installation time).
+win_update_RescheduleWaitTimeEnabled: 0
+
+# ScheduledInstallDay Range = 0|1|2|3|4|5|6|7
+#   0 = Every day.
+#   1 through 7 = the days of the week from Sunday (1) to Saturday (7).
+#   (Only valid if AUOptions = 4.)
+win_update_ScheduledInstallDay: 0
+
+# ScheduledInstallTime
+# The time of day in 24-hour format (0–23).
+win_update_ScheduledInstallTime: 0
+
+# UseWUServer
+#   1 = The computer gets its updates from a WSUS server.
+#   0 = The computer gets its updates from Microsoft Update.
+#   The WUServer value is not respected unless this key is set.
+win_update_UseWUServer: 0
